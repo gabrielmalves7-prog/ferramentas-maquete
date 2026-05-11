@@ -36,8 +36,11 @@ Abre [http://localhost:3000](http://localhost:3000) (redireciona para `/escala`)
 
 1. Push deste repositório para o GitHub.
 2. Na Vercel: **New Project** → importa o repo.
-3. Em **Settings → Environment Variables**, define as mesmas variáveis `NEXT_PUBLIC_SUPABASE_*` para Production e Preview.
-4. **Redeploy** após alterar variáveis.
+3. Confirma que **Root Directory** é a pasta onde está este `package.json` (a raiz do repo, salvo monorepo).
+4. Em **Settings → Environment Variables**, define as mesmas variáveis `NEXT_PUBLIC_SUPABASE_*` para Production e Preview.
+5. **Redeploy** após alterar variáveis.
+
+A raiz `/` redireciona para `/escala` via `next.config.ts` (`redirects`), mesmo que `app/page.tsx` no deploy ainda seja o template padrão do Next.
 
 ## Estrutura do projeto
 
