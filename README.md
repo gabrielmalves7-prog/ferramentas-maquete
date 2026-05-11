@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# xTool Suite
 
-## Getting Started
+Aplicação [Next.js](https://nextjs.org) (App Router) com duas ferramentas: **conversor de escala/proporção** e **planejador de peças** para o xTool Studio, com dados na nuvem via [Supabase](https://supabase.com).
 
-First, run the development server:
+## Requisitos
+
+- Node.js 20+
+- Conta Supabase (URL + chave anon/publicável)
+
+## Começar
 
 ```bash
+npm install
+cp .env.example .env.local
+# Edite .env.local com NEXT_PUBLIC_SUPABASE_URL e NEXT_PUBLIC_SUPABASE_ANON_KEY
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abre [http://localhost:3000](http://localhost:3000) (redireciona para `/escala`).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Comando | Descrição |
+|--------|-----------|
+| `npm run dev` | Servidor de desenvolvimento (Turbopack) |
+| `npm run build` | Build de produção |
+| `npm run start` | Servidor após `build` |
+| `npm run lint` | ESLint |
 
-## Learn More
+## Supabase
 
-To learn more about Next.js, take a look at the following resources:
+1. No projeto Supabase: **SQL Editor** → executa o ficheiro `supabase/migrations/20260511000000_xtool_suite.sql`.
+2. Copia **Project URL** e **anon/public** key para `.env.local` (ver `.env.example`).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deploy (Vercel + GitHub)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Push deste repositório para o GitHub.
+2. Na Vercel: **New Project** → importa o repo.
+3. Em **Settings → Environment Variables**, define as mesmas variáveis `NEXT_PUBLIC_SUPABASE_*` para Production e Preview.
+4. **Redeploy** após alterar variáveis.
 
-## Deploy on Vercel
+## Estrutura do projeto
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+app/
+  escala/page.tsx      # Ferramenta de escala
+  xtool/page.tsx       # Planejador xTool
+  globals.css
+  layout.tsx
+  page.tsx             # Redireciona para /escala
+  loading.tsx          # Estado de carregamento (App Router)
+  error.tsx            # Limite de erros (client)
+  not-found.tsx        # 404
+  icon.svg             # Favicon
+components/
+  HeaderNav.tsx
+  SiteChrome.tsx
+  ToolEscala.tsx
+  ToolXtoolPlanner.tsx
+lib/
+  scale-math.ts
+  types.ts
+  supabase/client.ts
+public/
+  robots.txt
+supabase/migrations/
+  20260511000000_xtool_suite.sql
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Licença
+
+Uso pessoal / o que preferires no teu repositório.
