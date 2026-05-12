@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 const links = [
   { href: "/escala", label: "Escala" },
   { href: "/xtool", label: "Planejador xTool" },
+  { href: "/pecas", label: "Biblioteca de peças" },
 ] as const;
 
 export function HeaderNav() {
