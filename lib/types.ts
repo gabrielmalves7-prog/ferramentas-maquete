@@ -28,3 +28,15 @@ export type XtoolProjectRow = {
   pecas: Piece[] | string;
   created_at?: string;
 };
+
+export type PieceUnit = "mm" | "cm";
+
+export type SavedPieceRow = {
+  id: string;
+  nome: string;
+  descricao: string;
+  largura: number;
+  altura: number;
+  unidade: PieceUnit;
+  created_at?: string;
+};
