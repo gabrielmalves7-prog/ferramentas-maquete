@@ -40,3 +40,11 @@ export type SavedPieceRow = {
   unidade: PieceUnit;
   created_at?: string;
 };
+
+export type SavedNoteRow = {
+  id: string;
+  titulo: string;
+  conteudo: string;
+  created_at?: string;
+  updated_at?: string;
+};
