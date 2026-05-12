@@ -7,6 +7,7 @@ const links = [
   { href: "/escala", label: "Escala" },
   { href: "/xtool", label: "Planejador xTool" },
   { href: "/pecas", label: "Biblioteca de peças" },
+  { href: "/notas", label: "Bloco de notas" },
 ] as const;
 
 export function HeaderNav() {
